@@ -50,15 +50,17 @@ public class ProductController {
 	public ResponseEntity<Void> ajouterProduit(@RequestBody Product product) {
 
 		Product productAdded = productDao.save(product);
-		if (productAdded == null) {
-			return ResponseEntity.noContent().build();
-		} else {
+		if (productAdded != null) {
 
 			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 					.buildAndExpand(productAdded.getId()).toUri();
 
 			return ResponseEntity.created(location).build();
+
 		}
+
+		return ResponseEntity.noContent().build();
+
 	}
 
 	@GetMapping(value = "produits/{prixLimit}")
