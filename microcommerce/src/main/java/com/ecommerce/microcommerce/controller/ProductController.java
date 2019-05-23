@@ -54,7 +54,7 @@ public class ProductController {
 		product.setId(productDTO.getId());
 		product.setNom(productDTO.getNom());
 		product.setPrix(productDTO.getPrix());
-		product.setPrix_achat(productDTO.getPrix_achat());
+		product.setPrixAchat(productDTO.getPrixAchat());
 		
 		Product productAdded = productDao.save(product);
 		

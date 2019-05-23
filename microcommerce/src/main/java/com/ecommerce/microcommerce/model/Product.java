@@ -13,14 +13,14 @@ public class Product {
 	private Integer id;
 	private String nom;
 	private int prix;
-	private int prix_achat;
+	private int prixAchat;
 
-	public Product(int id, String nom, int prix, int prix_achat) {
+	public Product(int id, String nom, int prix, int prixAchat) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prix = prix;
-		this.prix_achat = prix_achat;
+		this.setPrixAchat(prixAchat);
 	}
 
 	public Product() {
@@ -51,12 +51,12 @@ public class Product {
 		this.prix = prix;
 	}
 
-	public int getPrix_achat() {
-		return prix_achat;
+	public int getPrixAchat() {
+		return prixAchat;
 	}
 
-	public void setPrix_achat(int prix_achat) {
-		this.prix_achat = prix_achat;
+	public void setPrixAchat(int prixAchat) {
+		this.prixAchat = prixAchat;
 	}
 
 }
