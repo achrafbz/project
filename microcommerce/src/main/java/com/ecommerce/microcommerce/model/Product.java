@@ -15,13 +15,6 @@ public class Product {
 	private int prix;
 	private int prixAchat;
 
-	public Product(int id, String nom, int prix, int prixAchat) {
-		super();
-		this.id = id;
-		this.nom = nom;
-		this.prix = prix;
-		this.setPrixAchat(prixAchat);
-	}
 
 	public Product() {
 		// TODO Auto-generated constructor stub
