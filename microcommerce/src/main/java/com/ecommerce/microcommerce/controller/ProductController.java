@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ecommerce.microcommerce.dao.ProductDao;
 import com.ecommerce.microcommerce.model.Product;
+import com.ecommerce.microcommerce.model.ProductDTO;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
@@ -47,9 +48,16 @@ public class ProductController {
 	}
 
 	@PostMapping(value = "produits")
-	public ResponseEntity<Void> ajouterProduit(@RequestBody Product product) {
+	public ResponseEntity<Void> ajouterProduit(@RequestBody ProductDTO productDTO) {
 
+		Product product = new Product();
+		product.setId(productDTO.getId());
+		product.setNom(productDTO.getNom());
+		product.setPrix(productDTO.getPrix());
+		product.setPrix_achat(productDTO.getPrix_achat());
+		
 		Product productAdded = productDao.save(product);
+		
 		if (productAdded == null)
 			return ResponseEntity.noContent().build();
 
@@ -58,7 +66,7 @@ public class ProductController {
 
 		return ResponseEntity.created(location).build();
 	}
-	
+
 	@GetMapping(value = "produits/{prixLimit}")
 	public List<Product> findByPrixGreaterThan(@PathVariable int prixLimit) {
 		return productDao.findByPrixGreaterThan(prixLimit);
