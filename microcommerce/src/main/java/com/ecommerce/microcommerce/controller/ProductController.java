@@ -55,11 +55,8 @@ public class ProductController {
 		product.setNom(productDTO.getNomDTO());
 		product.setPrix(productDTO.getPrixDTO());
 		product.setPrixAchat(productDTO.getPrixAchatDTO());
-		
+
 		Product productAdded = productDao.save(product);
-		
-//		if (productAdded == null)
-//			return ResponseEntity.noContent().build();
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(productAdded.getId()).toUri();
