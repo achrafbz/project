@@ -51,10 +51,10 @@ public class ProductController {
 	public ResponseEntity<Void> ajouterProduit(@RequestBody ProductDTO productDTO) {
 
 		Product product = new Product();
-		product.setId(productDTO.getId());
-		product.setNom(productDTO.getNom());
-		product.setPrix(productDTO.getPrix());
-		product.setPrixAchat(productDTO.getPrixAchat());
+		product.setId(productDTO.getIdDTO());
+		product.setNom(productDTO.getNomDTO());
+		product.setPrix(productDTO.getPrixDTO());
+		product.setPrixAchat(productDTO.getPrixAchatDTO());
 		
 		Product productAdded = productDao.save(product);
 		
