@@ -50,15 +50,17 @@ public class ProductController {
 	public ResponseEntity<Void> ajouterProduit(@RequestBody Product product) {
 
 		Product productAdded = productDao.save(product);
-		if (productAdded == null)
+		if (productAdded == null) {
 			return ResponseEntity.noContent().build();
+		} else {
 
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(productAdded.getId()).toUri();
+			URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+					.buildAndExpand(productAdded.getId()).toUri();
 
-		return ResponseEntity.created(location).build();
+			return ResponseEntity.created(location).build();
+		}
 	}
-	
+
 	@GetMapping(value = "produits/{prixLimit}")
 	public List<Product> findByPrixGreaterThan(@PathVariable int prixLimit) {
 		return productDao.findByPrixGreaterThan(prixLimit);
