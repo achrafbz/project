@@ -58,8 +58,8 @@ public class ProductController {
 		
 		Product productAdded = productDao.save(product);
 		
-		if (productAdded == null)
-			return ResponseEntity.noContent().build();
+//		if (productAdded == null)
+//			return ResponseEntity.noContent().build();
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(productAdded.getId()).toUri();
